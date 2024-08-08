@@ -13,8 +13,8 @@ const PostList = () => {
     return (
         <section className="px-36">
             <SortingHeader />
-            <section className="flex gap-4 flex-wrap justify-between w-full mb-4">
-                {post?.data.map((data) => {
+            <section className="flex gap-4 flex-wrap justify-start w-full mb-4">
+                {post.map((data) => {
                     return (
                         <PostCard id={data.id} title={data.title} update={data.updated_at} image={data.small_image}/>
                     )

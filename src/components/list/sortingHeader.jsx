@@ -3,13 +3,14 @@
 import { usePostContext } from "@/context/postProvider";
 
 const SortingHeader = () => {
-    const {setOrder,order,setSize,size,curr,post} = usePostContext()
-    const page = post.meta.current_page
+    const {setOrder,order,setSize,size,curr,meta} = usePostContext()
+    const page = meta.current_page
     const end = page * size;
+    const start = 1 + end - size
     return (
         <header className="flex justify-between font-semibold items-center mb-4">
             <div className="">
-                <p>Showing {curr} - {size} of 100</p>
+                <p>Showing {start} - {end} of {meta.total}</p>
             </div>
             <div className="flex gap-4">
                 <label htmlFor="size">
