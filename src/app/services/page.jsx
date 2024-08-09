@@ -2,8 +2,8 @@
 
 const Page = () => {
   return (
-    <main className="">
-     
+    <main className="h-screen w-screen flex justify-center items-center">
+      <p>Services Page</p>
     </main>
   );
 }

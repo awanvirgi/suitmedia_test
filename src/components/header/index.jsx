@@ -1,9 +1,16 @@
 'use client'
+import { usePostContext } from "@/context/postProvider"
 import Image from "next/image"
+import Link from "next/link"
+import { usePathname } from "next/navigation"
 import { useEffect, useState } from "react"
 
 const Header = () => {
-    const [active, setActive] = useState(4)
+    const pathname = usePathname();
+    useEffect(()=>{
+        setActive(pathname)
+    },[pathname])
+    const [active, setActive] = useState()
     const [hidden, setHidden] = useState(true)
     const [top, setTop] = useState(true)
     const [lastScroll, setLastScroll] = useState(0)
@@ -25,18 +32,18 @@ const Header = () => {
         };
     }, [lastScroll]);
     return (
-        <header className={`fixed flex justify-between w-full py-6 px-36 z-50 bg-main-600 items-center transform duration-100 ${top?"bg-opacity-100":"bg-opacity-80"} ${hiddenNav ? "translate-y-0" : "-translate-y-full"}`}>
+        <header className={`fixed flex justify-between w-full py-6 px-36 z-50 bg-main-600 items-center transform duration-100 ${top ? "bg-opacity-100" : "bg-opacity-80"} ${hiddenNav ? "translate-y-0" : "-translate-y-full"}`}>
             <div className="h-auto w-36">
                 <Image alt="logo" priority src="/logo.png" width={400} height={400} className="object-cover" />
             </div>
             <nav>
                 <ul className="flex gap-6">
-                    <li className={`text-white p-1 ${active == 1 && "border-b-4"}`}>Work</li>
-                    <li className={`text-white p-1 ${active == 2 && "border-b-4"}`}>About</li>
-                    <li className={`text-white p-1 ${active == 3 && "border-b-4"}`}>Services</li>
-                    <li className={`text-white p-1 ${active == 4 && "border-b-4"}`}>ideas</li>
-                    <li className={`text-white p-1 ${active == 5 && "border-b-4"}`}>Careers</li>
-                    <li className={`text-white p-1 ${active == 6 && "border-b-4"}`}>Contact</li>
+                    <li className={`text-white p-1 cursor-pointer ${active == "/" && "border-b-4"}`}><Link href="/">Work</Link> </li>
+                    <li className={`text-white p-1 cursor-pointer ${active == "/about" && "border-b-4"}`}><Link href="/about">About</Link> </li>
+                    <li className={`text-white p-1 cursor-pointer ${active == "/services" && "border-b-4"}`}><Link href="/services">Services</Link> </li>
+                    <li className={`text-white p-1 cursor-pointer ${active == "/ideas" && "border-b-4"}`}><Link href="/ideas">Ideas</Link> </li>
+                    <li className={`text-white p-1 cursor-pointer ${active == "/careers" && "border-b-4"}`}><Link href="/careers">Careers</Link> </li>
+                    <li className={`text-white p-1 cursor-pointer ${active == "/contact" && "border-b-4"}`}><Link href="/contact">Contact</Link> </li>
                 </ul>
             </nav>
         </header>

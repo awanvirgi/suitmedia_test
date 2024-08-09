@@ -1,6 +1,8 @@
+'use client'
 import Image from "next/image"
 import PostList from "./postList"
-
+import { usePostContext } from "@/context/postProvider"
+import { useEffect } from "react"
 const Page = () => {
     return (
         <main className="w-full">
