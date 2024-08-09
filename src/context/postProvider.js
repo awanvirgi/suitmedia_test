@@ -53,10 +53,6 @@ const PostProvider = ({ children }) => {
     }
 
     useEffect(() => {
-        console.log(link)
-    }, [link])
-
-    useEffect(() => {
         fetchData(curr, size, order)
         localStorage.setItem('size', size)
         localStorage.setItem('order', order)

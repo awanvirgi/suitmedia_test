@@ -16,7 +16,7 @@ const PostList = () => {
             <section className="flex gap-4 flex-wrap justify-start w-full mb-4">
                 {post.map((data) => {
                     return (
-                        <PostCard id={data.id} title={data.title} update={data.updated_at} image={data.small_image}/>
+                        <PostCard key={data.id} id={data.id} title={data.title} update={data.updated_at} image={data.medium_image}/>
                     )
                 })}
             </section>
